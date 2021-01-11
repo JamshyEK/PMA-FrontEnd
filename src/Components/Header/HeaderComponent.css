@@ -1,0 +1,14 @@
+.signupbtn{
+    padding-right: 10px;
+}
+.navbar{
+    padding: 0rem 1rem;
+    background-color: white;
+}
+#register{
+    margin-right: 5px;
+}
+#login{
+    color: #ffffff;
+    background-color: #707cd2;
+}

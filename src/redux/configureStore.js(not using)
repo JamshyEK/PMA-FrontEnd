@@ -1,0 +1,18 @@
+import {createStore,combineReducers,applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+import {createForms} from 'react-redux-form';
+import {initialRegistration} from './RegistrationForm/registration';
+
+export const configureStore=()=>{
+    const store = createStore (combineReducers({
+        
+        ...createForms({
+            registration: initialRegistration
+        })
+    }),
+    applyMiddleware(thunk,logger)
+    );
+return store;
+
+}
