@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Loading from '../Loading/LoadingComponent'
 import ErrorNotFound from '../ErrorsCom/Error404'
 import { baseUrl } from "../../shared/baseUrl";
+import TopupButton from '../Button/TopupButtonComponent'
 
 export default class ProfileComponent extends Component {
   constructor(props) {
@@ -51,15 +52,17 @@ export default class ProfileComponent extends Component {
                   </div>
                   <div className="user-btm-box mt-5 d-md-flex">
                     <div className="col-md-4 col-sm-4 text-center">
-                      <h1></h1>
+                      <h1>  </h1>
                     </div>
                     <div className="col-md-4 col-sm-4 text-center">
                       <h1>{this.props.profile.profile.credit}</h1>
                     </div>
                     <div className="col-md-4 col-sm-4 text-center">
-                      <h1></h1>
+                    
                     </div>
+                     
                   </div>
+                  <TopupButton test={'hello'} updateProfileCredit={this.props.updateProfileCredit}/>
                 </div>
               </div>
 

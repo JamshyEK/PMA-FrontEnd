@@ -22,6 +22,7 @@ function RequestCardComponent(props) {
               <a href="#">John Doe</a>
             </li> */}
               <li className="date">{props.details.requestedDate}</li>
+              
             </ul>
           </Link>
         </div>
@@ -30,6 +31,7 @@ function RequestCardComponent(props) {
           <div className="row">
             <div className="col-8">
               <h1>{props.details.requestType.toUpperCase()} </h1>
+             
             </div>
             <div className="col-4">
               {" "}
@@ -150,7 +152,19 @@ function RequestCardComponent(props) {
 
 
                
-              ) : null}
+              ) :    
+               (<div className="float-right">
+               <button
+                  type="button"
+                  class="btn btn-primary "
+                  onClick={() => props.updateRequest(Id,"Collected")}
+                >
+                  <i class="fa fa-check-square" aria-hidden="true">
+                    {" "}
+                    Collect
+                  </i>
+                </button>
+                </div>)}
             </div>
           </div>
         </div>

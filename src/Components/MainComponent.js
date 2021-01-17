@@ -8,6 +8,7 @@ import Profile from "./Profile/ProfileComponent";
 import NewRequest from "./NewRequest/NewRequestComponent";
 import AllRequests from "./AllRequests/AllRequestsComponent";
 import RequestDetailCard from "./RequestCard/RequestDetailCardComponent";
+import Posts from './PostsCom/PostComponent'
 import { connect } from "react-redux";
 import { actions } from "react-redux-form";
 import { postRegistration } from "../redux/RegistrationForm/registrationAction";
@@ -20,9 +21,9 @@ import {
   loginFailed,
 } from "../redux/Profile/profileAction";
 
-import { fetchProfile } from "../redux/UsersProfile/UserProfileAction";
+import { fetchProfile,updateProfileCredit } from "../redux/UsersProfile/UserProfileAction";
 import { fetchAllRequests,deleteRequest } from "../redux/AllRequests/AllRequestAction";
-import {fetchAllRequestsAdmin,updateRequest} from '../redux/AllRequestsAdmin/AllRequestAction'
+import {fetchAllRequestsAdmin,updateRequest,fetchAllRequestsKudumbashree,updateRequestKudumbashree} from '../redux/AllRequestsAdmin/AllRequestAction'
 import { Container, Row, Col } from "react-bootstrap";
 
 const mapStateToProps = (state) => {
@@ -30,6 +31,7 @@ const mapStateToProps = (state) => {
     profileStatus: state.profileStatus,
     profileDetails: state.profileDetails,
     allRequest: state.allRequest,
+    allRequestAdmin:state.allRequestAdmin
   };
 };
 
@@ -80,6 +82,16 @@ const mapDispatchToProps = (dispatch) => ({
   },
   updateRequest:(id,status)=>{
     dispatch(updateRequest(id,status))
+  },
+  fetchAllRequestsKudumbashree:()=>{
+    dispatch(fetchAllRequestsKudumbashree())
+  },
+  updateRequestKudumbashree:(id,status)=>{
+    dispatch(updateRequestKudumbashree(id,status))
+  },
+
+  updateProfileCredit:(credit)=>{
+    dispatch(updateProfileCredit(credit))
   }
 });
 
@@ -123,6 +135,11 @@ class Main extends Component {
               logout={this.props.logout}
             />
             <Switch>
+            <Route
+                exact
+                path="/"
+                component={Posts}
+              />
               <Route
                 path="/register"
                 render={() =>
@@ -171,6 +188,7 @@ class Main extends Component {
                     <Profile
                       fetchProfile={this.props.fetchProfile}
                       profile={this.props.profileDetails}
+                      updateProfileCredit={this.props.updateProfileCredit}
                     />
                   ) : (
                     <Redirect to="/" />
@@ -213,9 +231,24 @@ class Main extends Component {
                   this.props.profileStatus.isLoggedIn === true && this.props.profileStatus.role==="admin" ? (
                     <AllRequests
                       fetchAllRequests={this.props.fetchAllRequestsAdmin}
-                      allRequest={this.props.allRequest}
+                      allRequestAdmin={this.props.allRequest}
                       profile={this.props.profileStatus}
                       updateRequest={this.props.updateRequest}
+                    />
+                  ) : (
+                    <Redirect to="/" />
+                  )
+                }
+              />
+                 <Route
+                path="/all_request_Kudumbashree"
+                render={() =>
+                  this.props.profileStatus.isLoggedIn === true && this.props.profileStatus.role==="kudumbashree" ? (
+                    <AllRequests
+                      fetchAllRequests={this.props.fetchAllRequestsKudumbashree}
+                      allRequest={this.props.allRequest}
+                      profile={this.props.profileStatus}
+                      updateRequest={this.props.updateRequestKudumbashree}
                     />
                   ) : (
                     <Redirect to="/" />

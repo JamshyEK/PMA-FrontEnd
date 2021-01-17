@@ -33,8 +33,8 @@ export default class HeaderComponent extends Component {
          
         </div>:
           <Nav className="mr-auto">
-            <Nav.Link>Home{this.props.profile.isLoggedIn}</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            {/* <Nav.Link>Home{this.props.profile.isLoggedIn}</Nav.Link>
+            <Nav.Link href="#link">Link</Nav.Link> */}
           </Nav>
         }
           <Form inline>

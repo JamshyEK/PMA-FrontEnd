@@ -61,10 +61,10 @@ const Side = (props) => {
                   <NavLink to="/all_request_admin">
                     <li className="sidebar-item">
                       <a
-                        className="sidebar-link waves-effect waves-dark sidebar-link"
+                        className="sidebaall_request_adminr-link waves-effect waves-dark sidebar-link"
                         aria-expanded="false"
                       >
-                        <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                        <i className="fa fa-list-alt" aria-hidden="true"></i>
                         <span className="hide-menu">Requests</span>
                       </a>
                     </li>
@@ -80,15 +80,26 @@ const Side = (props) => {
                       </a>
                     </li>
                   </NavLink>
-                  </div>
-              ): (          <div>
-                  <NavLink to="/new_request">
+                  <NavLink to="/create_posts">
                     <li className="sidebar-item">
                       <a
                         className="sidebar-link waves-effect waves-dark sidebar-link"
                         aria-expanded="false"
                       >
                         <i className="fa fa-plus-circle" aria-hidden="true"></i>
+                        <span className="hide-menu">Create Posts</span>
+                      </a>
+                    </li>
+                  </NavLink>
+                  </div>
+              ): (          <div>
+                  <NavLink to="/all_request_Kudumbashree">
+                    <li className="sidebar-item">
+                      <a
+                        className="sidebar-link waves-effect waves-dark sidebar-link"
+                        aria-expanded="false"
+                      >
+                        <i className="fa fa-list-alt" aria-hidden="true"></i>
                         <span className="hide-menu">Requests</span>
                       </a>
                     </li>

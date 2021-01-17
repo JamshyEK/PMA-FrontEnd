@@ -16,7 +16,7 @@ const rootReducer=combineReducers({
     ,...createForms({
         registration: initialRegistration,
         login:initiallogin,
-        request:initialRequest
+        request:initialRequest,
     })
 })
 

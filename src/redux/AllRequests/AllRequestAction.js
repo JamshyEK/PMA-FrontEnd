@@ -2,12 +2,12 @@ import {
   ADD_ALL_REQUESTS,
   ALL_REQUESTS_LOADING,
   ALL_REQUESTS_ERROR,
+  DELETE_REQUEST,
 } from "./AllRequestType";
 import { baseUrl, headers } from "../../shared/baseUrl";
 import axios from "axios";
 
 export const fetchAllRequests = () => (dispatch) => {
-
   dispatch(AllRequestsLoading());
   // setTimeout(()=>{
   //   dispatch(addDishes(DISHES));
@@ -71,9 +71,11 @@ export const deleteRequest = (id) => (dispatch) => {
     .then((response) => {
       console.log(response.data);
       // dispatch(addAllRequests(response.data))
-      console.log("before");
-      dispatch(fetchAllRequests());
-      console.log("after");
+      // console.log("before");
+      // dispatch(fetchAllRequests());
+      
+      dispatch(requestDelete(id));
+      
     })
 
     .catch(
@@ -81,6 +83,13 @@ export const deleteRequest = (id) => (dispatch) => {
       // dispatch(AllRequestsErr(error.message))
     );
 };
+
+export const requestDelete = (ID) => ({
+  type: DELETE_REQUEST,
+  payload: {
+    request_id: ID,
+  },
+});
 
 export const addAllRequests = (ALL_REQUESTS) => ({
   type: ADD_ALL_REQUESTS,

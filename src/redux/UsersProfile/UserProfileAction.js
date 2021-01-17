@@ -1,4 +1,4 @@
-import {ADD_PROFILE,PROFILE_ERROR,PROFILE_LOADING} from './UserProfileType'
+import {ADD_PROFILE,PROFILE_ERROR,PROFILE_LOADING,UPDATE_CREDIT} from './UserProfileType'
 import {baseUrl,headers} from '../../shared/baseUrl'
 import axios from 'axios';
 
@@ -55,4 +55,12 @@ export const fetchProfile = () => (dispatch) => {
   export const profileErr = (msg) => ({
     type: PROFILE_ERROR,
     payload: { profileErr: msg }
+  });
+
+
+  export const updateProfileCredit = (CREDIT) => ({
+    type: UPDATE_CREDIT,
+    payload: {
+      credit: CREDIT,
+    },
   });
